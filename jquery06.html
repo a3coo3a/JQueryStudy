@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/jquery.js"></script>
+</head>
+<body>
+  
+  <button type="button" id="ajax">제이쿼리 비동기</button>
+
+  <script>
+    // get은 조회를 하는데 사용하기로 암묵적 약속, 그래서 대부분 허용. 
+    // post는 데이터를 숨겨서 실어보내는 의미, 이러한 데이터를 이용해서 수정이나 변경할 이야기
+    // post방식은 데이터의 수정,변경이 있어 위험하다. 
+    // 서버가 다른경우 기본적으로 post 요청을 허용하지 않음 (보안정책,규제)
+    // 같은 서버는 괜찮음.
+
+    // contentType을 안적으면 form타입으로 기본 설정됨.
+    $("#ajax").click(function(){
+      $.ajax({
+        type : "POST",  /* 필수옵션: 보낼타입 */
+        url : "http://localhost:13002/myweb/getJson", /* 필수옵션: 요청경로 */
+        data : JSON.stringify({"bno" : "1", "writer":"홍길동"}), /* 필수는아니나 거의 다 써서보냄: 보낼데이터 */
+        dataType : "application/json; charset=utf-8", /* 서버에서 전달받는 데이터타입지정 (생략가능) */
+        contentType : "application/json; charset=utf-8", /* 보내는 데이터대한 타입 , 필수는 아니나 에러를 줄이기 위해 필수로 적는게 좋다*/
+        success : function(data){  /* 성공시 돌려받을 콜백함수 */
+          console.log(data.JSON.parse(httpRequest.responseText));
+        },
+        error : function(error){ /* 실패(에러)시 돌려받을 콜백함수 */
+          console.log(error);
+        }  
+      })
+    })
+
+
+  </script>
+
+</body>
+</html>
