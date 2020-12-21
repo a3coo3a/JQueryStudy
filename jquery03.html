@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/jquery.js"></script>
+</head>
+<body>
+  <button type="button" id="btn">이벤트</button>
+
+  <script>
+    //window.onload = function(){
+    //  document.getElementById("btn").onclick = function(){
+    //    alert("kkk");
+    //  }
+    //}
+
+    // JS의 window.onload이벤트를 대체하는 구문
+    // 첫번째
+    //$(window).on("load",function(){
+    //  document.getElementById("btn").onclick = function(){
+    //    alert("kkk");
+    //  }
+    //});
+
+    // 두번째
+    // 특징 : ready이벤트는 여러개 사용가능, 여러개 사용시 순서대로 적용
+    $(document).ready(function(){
+      document.getElementById("btn").onclick = function(){
+        alert("kkk");
+      }
+    });
+
+  </script>
+</body>
+</html>
